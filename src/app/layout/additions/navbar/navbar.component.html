@@ -1,0 +1,42 @@
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+      <a class="navbar-brand" ><img src="assets/images/5875124707123118439.jpg" width="150px" alt="Fresh Cart Logo"></a>
+      <div class="collapse d-flex justify-content-between navbar-collapse" id="navbarSupportedContent">
+
+        <div class="navbar-nav  mb-2 mb-lg-0 ">
+
+
+          @if (isLogin)
+          {
+           <a class="nav-link " routerLink="home"  routerLinkActive=" text-white rounded-pill">Home </a>
+           <a class="nav-link " routerLink="carts" routerLinkActive=" text-white rounded-pill" >Carts</a>
+           <a class="nav-link" routerLink="products" routerLinkActive=" text-white rounded-pill">Products</a>
+           <a class="nav-link" routerLink="categories" routerLinkActive=" text-white rounded-pill">Categories</a>
+           <a class="nav-link" routerLink="brands" routerLinkActive=" text-white rounded-pill">Brands</a>
+
+         }
+
+         </div>
+
+          <div class="d-flex gap-3 align-content-center align-items-center" >
+            <i class="fa-brands fa-facebook cursor-pointer"></i>
+            <i class="fa-brands fa-twitter cursor-pointer"></i>
+            <i class="fa-brands fa-tiktok cursor-pointer"></i>
+            <i class="fa-brands fa-linkedin cursor-pointer"></i>
+            <i class="fa-brands fa-instagram cursor-pointer"></i>
+            @if (!isLogin)
+            {
+              <a class="nav-link" routerLink="login"  routerLinkActive=" text-white rounded-pill p-2">Login </a>
+              <a class="nav-link" routerLink="register"  routerLinkActive=" text-white rounded-pill p-2">Register </a>
+            }
+
+            @if (isLogin)
+            {
+              <a (click)="Logout()" class="nav-link cursor-pointer" >Logout</a>
+            }</div>
+
+          </div>
+        </div>
+
+</nav>

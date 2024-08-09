@@ -1,0 +1,50 @@
+<div class="container pt-4 w-75 mx-auto my-5">
+
+    <h3 class="regH3 pb-2">Login Now  </h3>
+    
+    @if (errorMass) {
+        <div class="alert alert-danger d-flex "><i class="fa-solid fa-circle-exclamation fs-4 me-2 mt-1"></i><h4>{{errorMass}}</h4></div>
+    }
+    
+    <form class="mb-3" [formGroup]="LoginForm" (ngSubmit)="loginSbmit()">
+    
+        <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Email : </label>
+        <input type="email" formControlName="email" class="form-control" id="exampleFormControlInput1" >
+        
+        @if(LoginForm.get('email')?.errors && LoginForm.get('email')?.touched ){
+    
+            <div class="alert alert-danger">
+                @if (LoginForm.get('email')?.errors?.['required']) {
+                    <p>Email Must be Required </p>
+                }
+                @else if (LoginForm.get('email')?.errors?.['email']) {
+                    <p>Email Must be Vaild</p>
+                }
+            </div>
+        }
+        </div>
+    
+        <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Password : </label>
+        <input type="password" formControlName="password" class="form-control" id="passFormControlInput1" >
+    
+        @if(LoginForm.get('password')?.errors && LoginForm.get('password')?.touched ){
+    
+            <div class="alert alert-danger">
+                @if (LoginForm.get('password')?.errors?.['required']) {
+                    <p>password Must be Required </p>
+                }
+                @else if (LoginForm.get('password')?.errors?.['pattern']) {
+                    <p>password Must be Vaild</p>
+                }
+            </div>
+        }
+    
+        </div>
+        
+       <button [disabled]="LoginForm.invalid" type="submit" class="btn text-light d-block ms-auto"> Login
+        @if (isLoading==true) {<i class="fa-solid fa-spinner fa-spin-pulse ms-2"></i>}</button>
+    
+    
+    </form>
